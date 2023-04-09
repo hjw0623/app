@@ -1,116 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/searchButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".mainActivity">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/mainFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/membershipButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.023" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.954"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.023"
-            app:srcCompat="@android:drawable/ic_menu_search" />
-    </LinearLayout>
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="200dp"
-        android:paddingBottom="200dp">
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/nav_menu"
+        tools:ignore="MissingConstraints" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/allButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/all_layout" />
-
-            <ImageButton
-                android:id="@+id/cuButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/cu_layout" />
-
-            <ImageButton
-                android:id="@+id/sevenButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/seven_layout" />
-
-            <ImageButton
-                android:id="@+id/emartButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/emart_layout" />
-
-            <ImageButton
-                android:id="@+id/gsButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/gs_layout" />
-        </LinearLayout>
-    </HorizontalScrollView>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <FrameLayout
-            android:id="@+id/containers"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-        </FrameLayout>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:name="com.google.android.material.bottomnavigation.BottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:itemBackground="@color/white"
-            android:visibility="visible"
-            app:menu="@menu/bottom_menu" />
-
-    </LinearLayout>
-</LinearLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>

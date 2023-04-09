@@ -1,28 +1,27 @@
-package  com.example.proto01
-
-import android.os.Bundle
+package com.example.proto01
 
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.proto01.databinding.ActivityMainBinding
 import com.example.proto01.fragment.CameraFragment
 import com.example.proto01.fragment.HomeFragment
 import com.example.proto01.fragment.MapFragment
-import com.google.android.material.navigation.NavigationView
+import com.example.proto01.fragment.SearchFragment
 
 private const val TAG_Home = "HomeFragment"
 private const val TAG_Camera = "CameraFragment"
 private const val TAG_Map = "MapFragment"
-class MainActivity : AppCompatActivity() {
-
+private const val TAG_Search = "SearchActivity"
+class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setFragment(TAG_Home, HomeFragment())
+        setFragment(TAG_Search, (SearchFragment()))
 
         binding.navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -33,7 +32,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-
     private fun setFragment(tag: String, fragment: Fragment) {
         val manager: FragmentManager = supportFragmentManager
         val fragTransaction = manager.beginTransaction()
@@ -44,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         val home = manager.findFragmentByTag(TAG_Home)
         val camera = manager.findFragmentByTag(TAG_Camera)
         val map = manager.findFragmentByTag(TAG_Map)
+        val search = manager.findFragmentByTag(TAG_Search)
 
         if (home != null){
             fragTransaction.hide(home)
@@ -55,6 +54,9 @@ class MainActivity : AppCompatActivity() {
 
         if (map != null) {
             fragTransaction.hide(map)
+        }
+        if (search != null) {
+            fragTransaction.hide(search)
         }
 
         if (tag == TAG_Home) {
@@ -73,11 +75,13 @@ class MainActivity : AppCompatActivity() {
                 fragTransaction.show(map)
             }
         }
+        else if (tag == TAG_Search) {
+            if (search != null){
+                fragTransaction.show(search)
+            }
+        }
 
         fragTransaction.commitAllowingStateLoss()
 
     }
 }
-
-
-
